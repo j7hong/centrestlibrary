@@ -31,7 +31,7 @@
 //    return View::make('users');
 //});
 
-Route::get('/', function() {
+// Route::get('/', function() {
     
     // fetch all with where clause
 //    $users = DB::table('users')->where('username', '!=', 'james')->get();    
@@ -84,7 +84,7 @@ Route::get('/', function() {
     
     // return a subset, order by
   //  return User::orderBy('username', 'asc')->take(2)->get();
-});
+// });
 
 // Route::get('users', function()
 // {
@@ -119,9 +119,9 @@ Route::get('/', function() {
     
 // });
 
-Route::get('users', 'UsersController@index');
+// Route::get('users', 'UsersController@index');
 
-Route::get('users/{username}','UsersController@show');
+// Route::get('users/{username}','UsersController@show');
 
 // {
 
@@ -148,9 +148,15 @@ Route::get('users/{username}','UsersController@show');
 //     return 'hey, whats up?';
 // });
 
-Route::get('/', function()
-{
-    $name = 'Jim';
-    return View::make('hello')->with('name', $name);
+// Route::get('/', function()
+// {
+//     $name = 'Jim';
+//     return View::make('hello')->with('name', $name);
     
-});
+// });
+
+
+// Resoureful routing
+  Route::resource('users', 'UsersController');
+
+  Route::resource('users.questions', 'UsersController');
