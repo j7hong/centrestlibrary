@@ -1,21 +1,23 @@
-<!DOCTYPE html>
+@extends('layouts.master')
 
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>All Users</title>
-    </head>
-    <body>
-        <h1>All Users</h1>
+@section('content')
+        <h1>All Users</h1>        
 
-<!--        {{ dd($users->toArray()) }}-->
+        @if ($users->count())
+        
+            @foreach ($users as $user)
+            
+                <li>{{ link_to("/users/{$user->username}", $user->username) }}</li>
+                <!-- <li> $user->username }}</li>      -->
+            
+        
+        @endforeach
+        
 
-        {{ hi }}
-<!--        @foreach($users as $user)
-    <li>{{  }}</li>
-        <li>{{ $user->username }}</li>         
-        @endforeach-->
-
-
-    </body>
-</html>
+        @else
+        {
+        <p> "Unfortunately, there are no users." </p>
+    
+    @endif
+        <!-- dd($users->toArray())  -->
+@stop        

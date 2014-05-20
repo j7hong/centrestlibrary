@@ -86,34 +86,71 @@ Route::get('/', function() {
   //  return User::orderBy('username', 'asc')->take(2)->get();
 });
 
-//Route::get('users', function()
-//{
-//
+// Route::get('users', function()
+// {
+
 //   $users = User::all();
 
-//   return View::make('users/index')->with('users', $users);
+//   // return View::make('users/index')->with('users', $users);
 
-  //   return View::make('users/index')->withUsers($users);
+//     return View::make('users/index')->withUsers($users);
+
+//  // return View::make('users/index', ['users' => $users]);
+   
+//   // return View::make('index');
+// });
+
+// Route::get('users/{username}', function($username)
+// {
+//    $user = User::whereUsername($username)->first(); // select  * from users where user=USERNAME limit 1
+   
+//    return View::make('users.show', ['user' => $user]);
+// });
+
+// // Route::get('/greet/casual', function()
+// // {
+// //     return 'hey, whats up?';
+// // });
+
+// Route::get('/', function()
+// {
+//     $name = 'Jim';
+//     return View::make('hello')->with('name', $name);
+    
+// });
+
+Route::get('users', 'UsersController@index');
+
+Route::get('users/{username}','UsersController@show');
+
+// {
+
+  // $users = User::all();
+
+  // return View::make('users/index')->with('users', $users);
+
+    // return View::make('users/index')->withUsers($users);
 
  // return View::make('users/index', ['users' => $users]);
    
-//   return View::make('index');
-//});
+  // return View::make('index');
+// });
 
-//Route::get('users/{username}', function($username)
-//{
+// Route::get('users/{username}', function($username)
+// {
 //    $user = User::whereUsername($username)->first(); // select  * from users where user=USERNAME limit 1
-//    
+   
 //    return View::make('users.show', ['user' => $user]);
-//});
+// });
 
-Route::get('/greet/casual', function()
-{
-    return 'hey, whats up?';
-});
+// Route::get('/greet/casual', function()
+// {
+//     return 'hey, whats up?';
+// });
 
 Route::get('/', function()
 {
     $name = 'Jim';
     return View::make('hello')->with('name', $name);
+    
 });
