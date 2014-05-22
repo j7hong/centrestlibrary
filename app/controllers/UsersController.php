@@ -1,10 +1,19 @@
 <?php
 
 class UsersController extends \BaseController {
+	
+	protected $user;
+
+	public function __construct(User $user)
+	{
+	   $this->user = $user;
+	}
 
 	public function index()
 	{
-		 $users = User::all();
+		//  $users = User::all();
+
+		$users = $this->user->all();
 
     return View::make('users/index')->withUsers($users);
 	}
@@ -25,15 +34,46 @@ class UsersController extends \BaseController {
 
 		// return 'Create the new user, given the post data.';
 
-		$user = new User;
-		$user->username = Input::get('username');
-		$user->password = Hash::make(Input::get('password'));
-		$user->save();
+		// $validation = Validator::make(Input::all(), ['username' => 'required', 'password' => 'required']);
+
+	//	if (! User::isValid($input = Input::all()))
+
+
+	$input = Input::all();
+
+	// $this->user->fill(Input::all());
+
+	// return $this->user->toArray();
+
+	if (! $this->user->fill($input)->isValid())
+
+	// if (! $this->user->isValid($input = Input::all()))
+
+		{
+			return Redirect::back()->withInput()->withErrors($this->user->errors);
+		}
+
+		// $this->user->create($input);
+
+		$this->user->save();
+
+		// $validation = Validator::make(Input::all(), User::$rules);
+
+		// if ($validation->fails())
+		// 	{
+				// return 'failed validation'
+				// return Redirect::back()->withInput()->withErrors($validation->messages());
+			// }
+;
+		// $user = new User;
+		// $user->username = Input::get('username');
+		// $user->password = Hash::make(Input::get('password'));
+		// $user->save();
 
 		return Redirect::route('users.index');
 	}
 
-	public function show($userId, $questionId)
+	public function show($username)
 	{
 	   // $user = User::whereUsername($username)->first(); 
 	   
@@ -41,6 +81,9 @@ class UsersController extends \BaseController {
 
 		//$user = $username;
 		return 'Display question of id ' . $questionId . ' that is associated with a username of ' . $userId;
+
+		$user = $this->user->whereUsername($username)->first(); 
+
 	}
 
 	public function edit($username)
@@ -59,3 +102,7 @@ class UsersController extends \BaseController {
 	}
 
 }
+
+;
+
+
