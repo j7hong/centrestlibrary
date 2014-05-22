@@ -160,3 +160,28 @@
   Route::resource('users', 'UsersController');
 
   Route::resource('users.questions', 'UsersController');
+
+  // Route::get('/', function()
+  // {
+  //   User::create([
+
+  //       'username' => 'jack',
+  //       'email' => 'jack@bean.com',
+  //       'password' => Hash::make('beanstalk')
+
+  //   ]);
+
+  //   return 'Done';
+
+  // });
+
+  Route::resource('sessions', 'SessionsController');
+
+  Route::get('login', 'SessionsController@create');
+
+  Route::get('logout', 'SessionsController@destroy');
+
+  Route::get('admin', function()
+  {
+    return 'Admin page';
+  })->before('auth');
