@@ -19,12 +19,12 @@
 //    $users = User::all(); // select * from users
 //});
 
-//Route::get('/', function()
-//{
+// Route::get('/', function()
+// {
 //    $name = 'Mr. James Hong';
-//    
-//	return View::make('hello')->with('name', $name);
-//});
+   
+// 	return View::make('hello')->with('name', $name);
+// });
 
 //Route::get('users', function()
 //{
@@ -185,3 +185,10 @@
   {
     return 'Admin page';
   })->before('auth');
+
+  Route::resource('index', 'HomeController');
+
+  Route::get('/test', function()
+{
+    return 'Hello World';
+});
