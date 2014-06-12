@@ -11,10 +11,15 @@
   |
  */
 
-//Route::get('/', 'PagesController@home');
-//
-//Route::get('/about', 'PagesController@about');
-//
+Route::get('/home', 'PagesController@home', function()
+{
+  return View::make('index');
+});
+
+Route::get('/about', 'PagesController@about', function()
+{
+  return View::make('about');
+});
 //Route::get('/users', function() {
 //    $users = User::all(); // select * from users
 //});
@@ -26,68 +31,89 @@
 // 	return View::make('hello')->with('name', $name);
 // });
 
-//Route::get('users', function()
-//{
-//    return View::make('users');
-//});
+Route::get('test1', function()
+{
+   return View::make('test1');
+});
 
-// Route::get('/', function() {
+Route::get('/users-not-james', function() {
     
     // fetch all with where clause
-//    $users = DB::table('users')->where('username', '!=', 'james')->get();    
+   $users = DB::table('users')->where('username', '=', 'james')->get();    
 //    dd($users);
-//  return $users;
+ return $users;
     // die(var_dump($user));
-    
-//$users = DB::table('users')->get();    
-//     return $users;
+});
+
+Route::get('/get-all-records', function() {
+
+  $users = DB::table('users')->get();    
+    return $users;
     
     // fetch all
-    //$users = User::all(); // select * from users;
+    // (similar to line 45)
+    // $users = User::all(); // select * from users;
     
-    //return $users;
+    // return $users;
+});  
+
     
     
-    
-   // fetch
-//    $users = User::find(1);
-//    
-//    return $users;
+Route::get('/single-record', function() {
+  // fetch
+   $users = User::find(1);
    
-    // new row as object
-//    $user = new User;
-//    $user->username = 'NewUser';
-//    $user->password = Hash::make('password');
-//    $user->save(); //save to database
-//    return User::all();
+   return $users;
+}); 
+   
+   
+Route::get('/record-as-obj', function() {
+  // new row as object
+   $user = new User;
+   $user->username = 'NewUser';
+   $user->password = Hash::make('password');
+   $user->save(); //save to database
+   return User::all();
+});
     
-    // create
-//    User::create([
-//       'username' => 'AnotherUser',
-//        'password' => Hash::make('1234')
-//    ]);
-//    
-//    return User::all();    
     
-    // update
-//    $user = User::find(5);
-//    $user->username = 'UpdatedName';
-//    $user->save();
-//    
-//    return User::all();
-
-
-    // delete single row
-//    $user = User::find(13);
-//    $user->delete();
-//      return User::all();
+Route::get('/create-record', function() {
+  // create
+   User::create([
+      'username' => 'AnotherUser',
+       'password' => Hash::make('1234')
+   ]);
+   
+   return User::all(); 
+});
+       
     
-    // return a subset, order by
-  //  return User::orderBy('username', 'asc')->take(2)->get();
-// });
+Route::get('/update-record', function() {
+  // update
+   $user = User::find(5);
+   $user->username = 'NewName';
+   $user->save();
+   
+   return User::all();
+});
+    
 
-// Route::get('users', function()
-// {
+Route::get('/delete-record', function() {
+// delete single row
+   $user = User::find(15);
+   $user->delete();
+     return User::all();
+});
+    
+
+Route::get('/return-subset-orderby', function() {
+// return a subset, order by
+   return User::orderBy('username', 'asc')->take(2)->get();
+});    
+    
+
+Route::get('users', function()
+{
 
 //   $users = User::all();
 
@@ -98,32 +124,31 @@
 //  // return View::make('users/index', ['users' => $users]);
    
 //   // return View::make('index');
-// });
+});
 
-// Route::get('users/{username}', function($username)
-// {
-//    $user = User::whereUsername($username)->first(); // select  * from users where user=USERNAME limit 1
+Route::get('users/{username}', function($username)
+{
+   $user = User::whereUsername($username)->first(); // select  * from users where user=USERNAME limit 1
    
-//    return View::make('users.show', ['user' => $user]);
-// });
+   return View::make('users.show', ['user' => $user]);
+});
 
-// // Route::get('/greet/casual', function()
-// // {
-// //     return 'hey, whats up?';
-// // });
+Route::get('/greet/casual', function()
+{
+    return 'hey, whats up?';
+});
 
-// Route::get('/', function()
-// {
-//     $name = 'Jim';
-//     return View::make('hello')->with('name', $name);
+Route::get('/', function()
+{
+    $name = 'Jim';
+    return View::make('hello')->with('name', $name);
     
-// });
+});
 
 // Route::get('users', 'UsersController@index');
 
-// Route::get('users/{username}','UsersController@show');
-
-// {
+Route::get('users/{username}','UsersController@show', function()
+{
 
   // $users = User::all();
 
@@ -134,26 +159,14 @@
  // return View::make('users/index', ['users' => $users]);
    
   // return View::make('index');
-// });
+});
 
-// Route::get('users/{username}', function($username)
-// {
+Route::get('users/{username}', function($username)
+{
 //    $user = User::whereUsername($username)->first(); // select  * from users where user=USERNAME limit 1
    
 //    return View::make('users.show', ['user' => $user]);
-// });
-
-// Route::get('/greet/casual', function()
-// {
-//     return 'hey, whats up?';
-// });
-
-// Route::get('/', function()
-// {
-//     $name = 'Jim';
-//     return View::make('hello')->with('name', $name);
-    
-// });
+});
 
 
 // Resoureful routing
@@ -161,19 +174,19 @@
 
   Route::resource('users.questions', 'UsersController');
 
-  // Route::get('/', function()
-  // {
-  //   User::create([
+  Route::get('/', function()
+  {
+    User::create([
 
-  //       'username' => 'jack',
-  //       'email' => 'jack@bean.com',
-  //       'password' => Hash::make('beanstalk')
+        'username' => 'jack',
+        'email' => 'jack@bean.com',
+        'password' => Hash::make('beanstalk')
 
-  //   ]);
+    ]);
 
-  //   return 'Done';
+    return 'Done';
 
-  // });
+  });
 
   Route::resource('sessions', 'SessionsController');
 

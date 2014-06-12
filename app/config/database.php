@@ -52,28 +52,28 @@ return array(
 			'prefix'   => '',
 		),
 
-		'mysql' => array(
-			'driver'    => 'mysql',
-			'host'      => '68.178.143.149',
-			'database'  => 'centrelibDB',
-			'username'  => 'centrelibDB',
-			'password'  => 'libraryDB1!',
-			'charset'   => 'utf8',
-			'collation' => 'utf8_unicode_ci',
-			'prefix'    => '',
-		),
-
-		// -- local DB
 		// 'mysql' => array(
 		// 	'driver'    => 'mysql',
-		// 	'host'      => 'localhost',
-		// 	'database'  => 'http_512_trends',
-		// 	'username'  => 'root',
-		// 	'password'  => '',
+		// 	'host'      => '68.178.143.149',
+		// 	'database'  => 'centrelibDB',
+		// 	'username'  => 'centrelibDB',
+		// 	'password'  => 'libraryDB1!',
 		// 	'charset'   => 'utf8',
 		// 	'collation' => 'utf8_unicode_ci',
 		// 	'prefix'    => '',
 		// ),
+
+		// -- local DB
+		'mysql' => array(
+			'driver'    => 'mysql',
+			'host'      => 'localhost',
+			'database'  => 'http_512_trends',
+			'username'  => 'root',
+			'password'  => '',
+			'charset'   => 'utf8',
+			'collation' => 'utf8_unicode_ci',
+			'prefix'    => '',
+		),
 
 		'pgsql' => array(
 			'driver'   => 'pgsql',

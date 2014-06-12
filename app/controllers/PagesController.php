@@ -2,7 +2,7 @@
 
 class PagesController extends BaseController {
 
-    public function home() {
+    public function greet() {
         
         $name = 'Mr. JH';
 
@@ -14,6 +14,11 @@ class PagesController extends BaseController {
         $desc = 'This is a website built with PHP and Laravel.';
 
         return View::make('about')->with('desc', $desc);
+    }
+
+    public function index() {
+
+    	return View::make('index');
     }
 
 }
