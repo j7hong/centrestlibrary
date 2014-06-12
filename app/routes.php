@@ -11,7 +11,7 @@
   |
  */
 
-Route::get('/home', 'PagesController@home', function()
+Route::get('/index', 'PagesController@index', function()
 {
   return View::make('index');
 });
@@ -20,9 +20,36 @@ Route::get('/about', 'PagesController@about', function()
 {
   return View::make('about');
 });
-//Route::get('/users', function() {
+
+// = = = SESSIONS CONTROLLER (LOGIN) = = = 
+  // Route::resource('sessions', 'SessionsController');
+
+  // Route::get('/login', 'SessionsController@create');
+
+  // Route::get('/logout', 'SessionsController@destroy');
+
+  // Route::get('/admin', function()
+  // {
+  //   return 'Admin page';
+  // })->before('auth');
+
+
+// = = = HOME CONTROLLER = = = 
+  // Route::get('/books', function() {
+  //   $books = DB::table('books')->get();
+
+  //   return $books;
+  // });
+
+  // Route::resource('index', 'HomeController');
+
+// = = = BOOKS CONTROLLER = = = 
+
+  // Route::resource('books', 'BooksController');
+
+// Route::get('/all-users', function() {
 //    $users = User::all(); // select * from users
-//});
+// });
 
 // Route::get('/', function()
 // {
@@ -31,9 +58,22 @@ Route::get('/about', 'PagesController@about', function()
 // 	return View::make('hello')->with('name', $name);
 // });
 
-Route::get('test1', function()
+Route::get('/books', 'PagesController@allBooks', function(){
+
+  // return View::make('books');
+  $books = DB::table('books')->get();
+
+    return $books;
+
+});
+
+Route::get('/test2', function()
 {
-   return View::make('test1');
+   // return View::make('test1');
+
+  $books = DB::table('books')->get();
+
+    return $books;
 });
 
 Route::get('/users-not-james', function() {
@@ -45,6 +85,7 @@ Route::get('/users-not-james', function() {
     // die(var_dump($user));
 });
 
+// not working
 Route::get('/get-all-records', function() {
 
   $users = DB::table('users')->get();    
@@ -70,7 +111,7 @@ Route::get('/single-record', function() {
 Route::get('/record-as-obj', function() {
   // new row as object
    $user = new User;
-   $user->username = 'NewUser';
+   $user->username = 'NewUserA';
    $user->password = Hash::make('password');
    $user->save(); //save to database
    return User::all();
@@ -90,7 +131,7 @@ Route::get('/create-record', function() {
     
 Route::get('/update-record', function() {
   // update
-   $user = User::find(5);
+   $user = User::find(15);
    $user->username = 'NewName';
    $user->save();
    
@@ -115,11 +156,11 @@ Route::get('/return-subset-orderby', function() {
 Route::get('users', function()
 {
 
-//   $users = User::all();
+  $users = User::all();
 
-//   // return View::make('users/index')->with('users', $users);
+  // return View::make('users/index')->with('users', $users);
 
-//     return View::make('users/index')->withUsers($users);
+    return View::make('users/index')->withUsers($users); 
 
 //  // return View::make('users/index', ['users' => $users]);
    
@@ -130,7 +171,7 @@ Route::get('users/{username}', function($username)
 {
    $user = User::whereUsername($username)->first(); // select  * from users where user=USERNAME limit 1
    
-   return View::make('users.show', ['user' => $user]);
+   return View::make('users/show', ['user' => $user]);
 });
 
 Route::get('/greet/casual', function()
@@ -138,17 +179,17 @@ Route::get('/greet/casual', function()
     return 'hey, whats up?';
 });
 
-Route::get('/', function()
-{
-    $name = 'Jim';
-    return View::make('hello')->with('name', $name);
+// Route::get('/', function()
+// {
+//     $name = 'Jim';
+//     return View::make('hello')->with('name', $name);
     
-});
+// });
 
 // Route::get('users', 'UsersController@index');
 
-Route::get('users/{username}','UsersController@show', function()
-{
+// Route::get('users/{username}','UsersController@show', function()
+// {
 
   // $users = User::all();
 
@@ -159,22 +200,14 @@ Route::get('users/{username}','UsersController@show', function()
  // return View::make('users/index', ['users' => $users]);
    
   // return View::make('index');
-});
-
-Route::get('users/{username}', function($username)
-{
-//    $user = User::whereUsername($username)->first(); // select  * from users where user=USERNAME limit 1
-   
-//    return View::make('users.show', ['user' => $user]);
-});
-
+// });
 
 // Resoureful routing
   Route::resource('users', 'UsersController');
 
   Route::resource('users.questions', 'UsersController');
 
-  Route::get('/', function()
+  Route::get('/new-user/jack', function()
   {
     User::create([
 
@@ -188,20 +221,5 @@ Route::get('users/{username}', function($username)
 
   });
 
-  Route::resource('sessions', 'SessionsController');
 
-  Route::get('login', 'SessionsController@create');
 
-  Route::get('logout', 'SessionsController@destroy');
-
-  Route::get('admin', function()
-  {
-    return 'Admin page';
-  })->before('auth');
-
-  Route::resource('index', 'HomeController');
-
-  Route::get('/test', function()
-{
-    return 'Hello World';
-});

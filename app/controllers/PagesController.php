@@ -9,16 +9,27 @@ class PagesController extends BaseController {
         return View::make('hello')->with('name', $name);
     }
     
-    public function about() {
-        
-        $desc = 'This is a website built with PHP and Laravel.';
-
-        return View::make('about')->with('desc', $desc);
-    }
-
     public function index() {
 
-    	return View::make('index');
+        return View::make('index');
     }
+
+    public function about() {
+        
+        // $desc = 'This is a website built with PHP and Laravel.';
+
+        return View::make('about');
+        // ->with('desc', $desc);
+    }
+
+    public function allBooks() {
+    
+        $books = DB::table('books')->get();
+
+        // return $books;
+
+        return View::make('books')->with('books', $books);
+    }
+
 
 }

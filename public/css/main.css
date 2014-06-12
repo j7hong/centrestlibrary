@@ -133,17 +133,17 @@ color: #491313;
 }
 
 /*For text that would have a size of 24px*/
-.heading1 {
+h1, .heading1 {
     font-size: 2.4em;
 }
 
 /*For text that would have a size of 18px*/
-.heading2 {
+h2, .heading2 {
     font-size: 1.8em;
 }
 
 /*For text that would have a size of 14px*/
-.heading3 {
+h3, .heading3 {
     font-size: 1.4em;
 }
 

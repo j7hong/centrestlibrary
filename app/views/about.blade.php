@@ -8,6 +8,7 @@
 
 
 @section('main-content')
+
 	<section role="main">
                 <h3 class="invisible">Main Content</h3>
                 <section>

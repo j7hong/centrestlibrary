@@ -52,12 +52,13 @@ return array(
 			'prefix'   => '',
 		),
 
+		// server DB
 		// 'mysql' => array(
 		// 	'driver'    => 'mysql',
 		// 	'host'      => '68.178.143.149',
 		// 	'database'  => 'centrelibDB',
 		// 	'username'  => 'centrelibDB',
-		// 	'password'  => 'libraryDB1!',
+		// 	'password'  => 'Library1!',
 		// 	'charset'   => 'utf8',
 		// 	'collation' => 'utf8_unicode_ci',
 		// 	'prefix'    => '',

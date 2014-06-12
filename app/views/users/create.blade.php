@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('content')
+@section('main-content')
 	<h1>Create new user</h1>
 
 {{ Form::open(['route' => 'users.store']) }}

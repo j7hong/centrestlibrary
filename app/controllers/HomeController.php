@@ -22,5 +22,8 @@ class HomeController extends BaseController {
         return View::make('index');
     }
 
+    public function search() {
+        return View::make('search');
+    }
 
 }

@@ -2,7 +2,9 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">  
-        <link rel="stylesheet" href="css/main.css" />      
+        <!-- <link rel="stylesheet" href="css/main.css" />       -->
+        {{ HTML::style('css/main.css'); }}
+
         @yield('head')
     </head>
     <body>
@@ -21,7 +23,7 @@
 
                 <!--This is the site's logo image, which is also a link to the home page.-->
                 <a href="index">
-                    <img class="logo" src="img/logo.png" alt="Cornerstone Books logo" />
+                    <img class="logo" src="{{ asset('img/logo.png') }}" alt="Cornerstone Books logo" />
                 </a>
 
                 <!--This is the title of the page. It should be rendered in the 'ebrima' font,
@@ -35,14 +37,14 @@
                     <h3 class="invisible">Buttons</h3>
                     <div class="join">
                         <a href="#">
-                            <img src="img/join-button.png" alt="Join Cornerstone Books" />
+                            <img src="{{asset('img/join-button.png')}}" alt="Join Cornerstone Books" />
                         </a>
                     </div>
                     <!--/join-->
 
                     <div class="login">
                         <a href="#">
-                            <img src="img/login-button.png" alt="Login to Cornerstone Books" />
+                            <img src="{{asset('img/login-button.png')}}" alt="Login to Cornerstone Books" />
                         </a>
                     </div>
                     <!--/login-->
@@ -54,7 +56,7 @@
 
                 <!--This is a brownish design at the bottom of the page header.-->
                 <div class="bar">
-                    <img src="img/bar.png" alt="A design at the top of the page" />
+                    <img src="{{asset('img/bar.png')}}" alt="A design at the top of the page" />
                 </div>
                 <!--/bar-->
 
@@ -65,7 +67,7 @@
             <!--===================================== LEFT BODY =====================================-->
             <div class="left-body">
                 <h2 class="invisible">Left Body</h2>
-
+                
                 <!--This is the page's main navigation.-->
                 <nav class="main-menu" role="navigation">
                     <h3 class="invisible">Main menu</h3>
@@ -76,19 +78,24 @@
                         <li>
                             {{ HTML::link('/about', 'About', array('alt' => "Link to the library's 'about page")) }}
                                 <!--A link to the about page-->
-                                <!-- <img src="img/about-button.png" alt="Link to the library's 'about' page" /> -->
+                                <!-- <img src="{{asset('img/about-button.png')}}" alt="Link to the library's 'about' page" /> -->
                             
                         </li>
+
+                        <!-- <li>
+                            {{ HTML::link('/all-users', 'Library members', array('alt' => "Link to the library's members page")) }}
+                        </li> -->
+                        
                         <!-- <li> 
                             <a href="#">
                                 <!--A link to the activities and events page- ->
-                                <img src="img/activities-and-events-button.png" alt="Link to the library's 'activities and events' page" />
+                                <img src="{{asset('img/activities-and-events-button.png')}}" alt="Link to the library's 'activities and events' page" />
                             </a>
                         </li>
                         <li>
                             <a href="#">
                                 <!--A link to the 'hours and directions' page- ->
-                                <img src="img/hours-and-directions-button.png" alt="Link to the library's 'hours and directions' page" />
+                                <img src="{{asset('img/hours-and-directions-button.png')}}" alt="Link to the library's 'hours and directions' page" />
                             </a>
                         </li>
                     </ul>
@@ -170,8 +177,8 @@
 
                         <input class="txt_search" type="text" value="Search books, magazines, DVDs..." />
                         <!-- <button name="btn_search" type="submit" value="Search"> -->
-                        <!--<img src="img/search-button.png" alt="Search Cornerstone books" onclick="search()" />-->
-                        <input type="image" class="search" src="img/centre-body/search-button.png" alt="A submit button to search library materials" />
+                        <!--<img src="{{asset('img/search-button.png')}}" alt="Search Cornerstone books" onclick="search()" />-->
+                        <input type="image" class="search" src="{{ asset('img/centre-body/search-button.png') }}" alt="A submit button to search library materials" />
 
                     </section>
                     <!--/search field-->
@@ -286,7 +293,7 @@
                 <h2 class="invisible">Bottom of Page</h2>
 
                 <div class="bar-bottom">
-                    <img src="img/bar.png" alt="A design at the bottom of the page" />
+                    <img src="{{asset('img/bar.png')}}" alt="A design at the bottom of the page" />
                 </div>
                 <!--/bar-bottom-->
 
