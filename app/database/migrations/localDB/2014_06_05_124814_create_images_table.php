@@ -16,7 +16,7 @@ class CreateImagesTable extends Migration {
 		{
 			$table->increments('Images_Id');
 			$table->string('Page');
-			$table->int('Sec_num');
+			$table->integer('Sec_num');
 		});
 	}
 

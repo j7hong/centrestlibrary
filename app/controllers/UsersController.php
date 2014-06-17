@@ -1,6 +1,6 @@
 <?php
 
-class UsersController extends lsBaseController {
+class UsersController extends BaseController {
 	
 	protected $user;
 

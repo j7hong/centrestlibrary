@@ -12,4 +12,9 @@
 @section('main-content')
 	<h1>Hello, {{ $user->username }}</h1>
 
+	<h2>You are a registered library member of Centre St. Library.</h2>
+
+	<p>
+		<li>{{ link_to("/users", 'Back to all registered library members list') }}</li>
+	</p>
 @stop	

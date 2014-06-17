@@ -11,7 +11,7 @@
   |
  */
 
-Route::get('/index', 'PagesController@index', function()
+Route::get('/', 'PagesController@index', function()
 {
   return View::make('index');
 });
@@ -22,16 +22,16 @@ Route::get('/about', 'PagesController@about', function()
 });
 
 // = = = SESSIONS CONTROLLER (LOGIN) = = = 
-  // Route::resource('sessions', 'SessionsController');
+  Route::resource('sessions', 'SessionsController');
 
-  // Route::get('/login', 'SessionsController@create');
+  Route::get('/login', 'SessionsController@create');
 
-  // Route::get('/logout', 'SessionsController@destroy');
+  Route::get('/logout', 'SessionsController@destroy');
 
-  // Route::get('/admin', function()
-  // {
-  //   return 'Admin page';
-  // })->before('auth');
+  Route::get('/admin', function()
+  {
+    return 'Admin page';
+  })->before('auth');
 
 
 // = = = HOME CONTROLLER = = = 
@@ -61,11 +61,30 @@ Route::get('/about', 'PagesController@about', function()
 Route::get('/books', 'PagesController@allBooks', function(){
 
   // return View::make('books');
-  $books = DB::table('books')->get();
+  $books = DB::table('Books')->get();
 
     return $books;
 
 });
+
+Route::get('books/{isbn}', function($isbn)
+{
+   
+   // $isbnString = (string) $isbn;
+
+
+
+   $book = DB::table('Books')->where('Type', '=', 'Paperback')->get(); 
+   
+   return View::make('books.show', ['book' => $book]);
+});
+
+// Route::get('users/{username}', function($username)
+// {
+//    $user = User::whereUsername($username)->first(); // select  * from users where user=USERNAME limit 1
+   
+//    return View::make('users/show', ['user' => $user]);
+// });
 
 Route::get('/test2', function()
 {

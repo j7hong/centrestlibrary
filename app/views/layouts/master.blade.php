@@ -22,7 +22,7 @@
                 <h2 class="invisible">Banner</h2>
 
                 <!--This is the site's logo image, which is also a link to the home page.-->
-                <a href="index">
+                <a href="/">
                     <img class="logo" src="{{ asset('img/logo.png') }}" alt="Cornerstone Books logo" />
                 </a>
 
@@ -35,17 +35,13 @@
                 <!--This DIV contains two buttons 'join' and 'login', which are links.-->
                 <div class="buttons">
                     <h3 class="invisible">Buttons</h3>
-                    <div class="join">
-                        <a href="#">
-                            <img src="{{asset('img/join-button.png')}}" alt="Join Cornerstone Books" />
-                        </a>
-                    </div>
+                    <!-- <div class="join">
+                        {{ link_to("/login}", 'Join') }}
+                    </div> -->
                     <!--/join-->
 
                     <div class="login">
-                        <a href="#">
-                            <img src="{{asset('img/login-button.png')}}" alt="Login to Cornerstone Books" />
-                        </a>
+                        {{ link_to("/login", 'Login') }}
                     </div>
                     <!--/login-->
 
@@ -73,7 +69,7 @@
                     <h3 class="invisible">Main menu</h3>
                     <ul class="main-menu-links">
                         <li>
-                            {{ HTML::link('/index', 'Home', array('alt' => "Link to the library's homepage")) }}
+                            {{ HTML::link('/', 'Home', array('alt' => "Link to the library's homepage")) }}
                         </li>
                         <li>
                             {{ HTML::link('/about', 'About', array('alt' => "Link to the library's 'about page")) }}

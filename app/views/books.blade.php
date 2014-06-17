@@ -6,7 +6,7 @@
 		               
         @foreach ($books as $book)
         	<p>
-                <li>{{ HTML::link("/index", $book->Title) }}</li>
+                <li>{{ HTML::link("/books/{$book->ISBN}", $book->Title) }}</li>
                 <!-- <li> $user->username }}</li>      -->
             </p>	
         

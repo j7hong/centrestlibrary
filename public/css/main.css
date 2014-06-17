@@ -274,13 +274,22 @@ small a
 { 
     float: left; 
     margin-right: 15px;
-    margin-bottom: 10px;        
+    margin-bottom: 10px; 
+    padding: 0.5rem;
+    background-color: #491313; /* brown */  
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;     
+
 }
 
 /*The links for the 'join' and 'login' buttons*/
-a .join, .login
+.join a, .login a
 { 
     display: inline; 
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: #fff; /*white*/    
 }
 
 /*This is the light-brownish bar design at the top of the page, right underneath the header (the same design is at the bottom of the page, above the footer, called 'bar-bottom'.)*/

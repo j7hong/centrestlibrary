@@ -1,3 +1,4 @@
+
 <?php
 
 return array(
@@ -53,28 +54,28 @@ return array(
 		),
 
 		// server DB
+		'mysql' => array(
+			'driver'    => 'mysql',
+			'host'      => '72.167.233.103',
+			'database'  => 'cslibrary',
+			'username'  => 'cslibrary',
+			'password'  => 'libraryDB1!',
+			'charset'   => 'utf8',
+			'collation' => 'utf8_unicode_ci',
+			'prefix'    => '',
+		), 
+
+		// -- local DB
 		// 'mysql' => array(
 		// 	'driver'    => 'mysql',
-		// 	'host'      => '68.178.143.149',
-		// 	'database'  => 'centrelibDB',
-		// 	'username'  => 'centrelibDB',
-		// 	'password'  => 'Library1!',
+		// 	'host'      => 'localhost',
+		// 	'database'  => 'cslibrary',
+		// 	'username'  => 'root',
+		// 	'password'  => '',
 		// 	'charset'   => 'utf8',
 		// 	'collation' => 'utf8_unicode_ci',
 		// 	'prefix'    => '',
 		// ),
-
-		// -- local DB
-		'mysql' => array(
-			'driver'    => 'mysql',
-			'host'      => 'localhost',
-			'database'  => 'http_512_trends',
-			'username'  => 'root',
-			'password'  => '',
-			'charset'   => 'utf8',
-			'collation' => 'utf8_unicode_ci',
-			'prefix'    => '',
-		),
 
 		'pgsql' => array(
 			'driver'   => 'pgsql',

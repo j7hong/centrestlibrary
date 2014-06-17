@@ -4,6 +4,8 @@
 </head>
 <body>
 	<div>
+		<h1>Centre Street Library</h1>
+
 		{{ Form::open(['route' => 'sessions.store']) }}
 
 		{{ Form::label('username', 'Username:') }}
@@ -21,5 +23,10 @@
 	</div>
 
 	{{ Form::close() }}
+
+	<p>
+		{{ link_to("/users", 'See all registered library members') }}
+	</p>
+
 </body>
 </html>

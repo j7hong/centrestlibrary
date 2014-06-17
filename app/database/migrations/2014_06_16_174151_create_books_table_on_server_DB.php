@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBooksTable extends Migration {
+class CreateBooksTableOnServerDB extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,7 +12,6 @@ class CreateBooksTable extends Migration {
 	 */
 	public function up()
 	{
-		
 		Schema::create('Books', function($table){
 			$table->increments('Books_Id');
 			$table->string('Title');

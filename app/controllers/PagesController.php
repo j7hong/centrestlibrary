@@ -24,7 +24,7 @@ class PagesController extends BaseController {
 
     public function allBooks() {
     
-        $books = DB::table('books')->get();
+        $books = DB::table('Books')->get();
 
         // return $books;
 
